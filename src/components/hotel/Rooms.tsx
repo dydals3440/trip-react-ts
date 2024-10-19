@@ -30,9 +30,9 @@ function Rooms({ hotelId }: { hotelId: string }) {
           const 마감임박인가 = room.avaliableCount === 1
           const 매진인가 = room.avaliableCount === 0
 
-          console.log(마감임박인가, 매진인가)
           return (
             <ListRow
+              key={room.id}
               left={
                 <img
                   src={room.imageUrl}

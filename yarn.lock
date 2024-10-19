@@ -2541,6 +2541,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@googlemaps/js-api-loader@npm:1.16.8":
+  version: 1.16.8
+  resolution: "@googlemaps/js-api-loader@npm:1.16.8"
+  checksum: 10/63771c753630c7c86c48e7e0978e0f2d84ca2ca20d5e0a3c2f9e539bd3adca22316953893e1b90f9fd411a172e73b2742aec1ce27897f108aae5a6245c990c9d
+  languageName: node
+  linkType: hard
+
+"@googlemaps/markerclusterer@npm:2.5.3":
+  version: 2.5.3
+  resolution: "@googlemaps/markerclusterer@npm:2.5.3"
+  dependencies:
+    fast-deep-equal: "npm:^3.1.3"
+    supercluster: "npm:^8.0.1"
+  checksum: 10/68590483e660ae6fa4755b18f7f5fb7336506eb5399a82a593efb6e2040c62a1aa714fc9a12af6cebb8564b9d133c9d1965f428158a1fdb1e4d9a5d9e5bcb64b
+  languageName: node
+  linkType: hard
+
 "@grpc/grpc-js@npm:~1.9.0":
   version: 1.9.15
   resolution: "@grpc/grpc-js@npm:1.9.15"
@@ -3157,6 +3174,37 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@react-google-maps/api@npm:^2.20.3":
+  version: 2.20.3
+  resolution: "@react-google-maps/api@npm:2.20.3"
+  dependencies:
+    "@googlemaps/js-api-loader": "npm:1.16.8"
+    "@googlemaps/markerclusterer": "npm:2.5.3"
+    "@react-google-maps/infobox": "npm:2.20.0"
+    "@react-google-maps/marker-clusterer": "npm:2.20.0"
+    "@types/google.maps": "npm:3.58.1"
+    invariant: "npm:2.2.4"
+  peerDependencies:
+    react: ^16.8 || ^17 || ^18
+    react-dom: ^16.8 || ^17 || ^18
+  checksum: 10/0399925a118890fc89d422d8bdfca59d3fcb8fe9bcd8434e39a9598af1c3aac73ece5f95c96a87c981bb3812763550e6b67e5622daf9997c12c5afdd2703e4cf
+  languageName: node
+  linkType: hard
+
+"@react-google-maps/infobox@npm:2.20.0":
+  version: 2.20.0
+  resolution: "@react-google-maps/infobox@npm:2.20.0"
+  checksum: 10/ad8dcf905c483e0ecfc0d4f6caf7a4136b0e0de83daa5093048545f6de3bf520d58f789aa1e028f8371977346991875bf2fec41354657ac84696b6acdd6527ff
+  languageName: node
+  linkType: hard
+
+"@react-google-maps/marker-clusterer@npm:2.20.0":
+  version: 2.20.0
+  resolution: "@react-google-maps/marker-clusterer@npm:2.20.0"
+  checksum: 10/28da905ea194758b046b3c92d8a890f42d6c9b845b6c43a10fe1e33ed29bfe3079030a4b9675f08d8a7888d1c06e915e1d19dd679ba3d03ebc3a616172e42ffa
+  languageName: node
+  linkType: hard
+
 "@remix-run/router@npm:1.20.0":
   version: 1.20.0
   resolution: "@remix-run/router@npm:1.20.0"
@@ -3687,6 +3735,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/google.maps@npm:3.58.1":
+  version: 3.58.1
+  resolution: "@types/google.maps@npm:3.58.1"
+  checksum: 10/3d5aaa901c0b5dcce45dc9f667912c04b99be0b4a8b541b5120b677697d17116684fddb457bea4955142755c9089993ea4b48b30705283c16935473b1818ecd1
+  languageName: node
+  linkType: hard
+
 "@types/graceful-fs@npm:^4.1.2":
   version: 4.1.9
   resolution: "@types/graceful-fs@npm:4.1.9"
@@ -3874,6 +3929,15 @@ __metadata:
   version: 1.2.7
   resolution: "@types/range-parser@npm:1.2.7"
   checksum: 10/95640233b689dfbd85b8c6ee268812a732cf36d5affead89e806fe30da9a430767af8ef2cd661024fd97e19d61f3dec75af2df5e80ec3bea000019ab7028629a
+  languageName: node
+  linkType: hard
+
+"@types/react-copy-to-clipboard@npm:^5":
+  version: 5.0.7
+  resolution: "@types/react-copy-to-clipboard@npm:5.0.7"
+  dependencies:
+    "@types/react": "npm:*"
+  checksum: 10/adc2970c8756e648daa06e294c422df3dc076a784344ab2ecb78a17ebd7e8e3dfd7f31e68c24267de4815cdeec573a743d952a308b45b8380f6b7912a9a8b911
   languageName: node
   linkType: hard
 
@@ -5746,6 +5810,15 @@ __metadata:
   version: 0.7.1
   resolution: "cookie@npm:0.7.1"
   checksum: 10/aec6a6aa0781761bf55d60447d6be08861d381136a0fe94aa084fddd4f0300faa2b064df490c6798adfa1ebaef9e0af9b08a189c823e0811b8b313b3d9a03380
+  languageName: node
+  linkType: hard
+
+"copy-to-clipboard@npm:^3.3.1":
+  version: 3.3.3
+  resolution: "copy-to-clipboard@npm:3.3.3"
+  dependencies:
+    toggle-selection: "npm:^1.0.6"
+  checksum: 10/e0a325e39b7615108e6c1c8ac110ae7b829cdc4ee3278b1df6a0e4228c490442cc86444cd643e2da344fbc424b3aab8909e2fec82f8bc75e7e5b190b7c24eecf
   languageName: node
   linkType: hard
 
@@ -8612,6 +8685,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"invariant@npm:2.2.4":
+  version: 2.2.4
+  resolution: "invariant@npm:2.2.4"
+  dependencies:
+    loose-envify: "npm:^1.0.0"
+  checksum: 10/cc3182d793aad82a8d1f0af697b462939cb46066ec48bbf1707c150ad5fad6406137e91a262022c269702e01621f35ef60269f6c0d7fd178487959809acdfb14
+  languageName: node
+  linkType: hard
+
 "ip-address@npm:^9.0.5":
   version: 9.0.5
   resolution: "ip-address@npm:9.0.5"
@@ -10004,6 +10086,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"kdbush@npm:^4.0.2":
+  version: 4.0.2
+  resolution: "kdbush@npm:4.0.2"
+  checksum: 10/ca1f7a106c129056044ab19851909efcc33680d568066872de996d3bc4d41f81d2a6423e577f20436d1a8b96a6f3c514af8cb94cc54a4d784d9df976b43066f8
+  languageName: node
+  linkType: hard
+
 "keyv@npm:^4.5.3":
   version: 4.5.4
   resolution: "keyv@npm:4.5.4"
@@ -10224,7 +10313,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"loose-envify@npm:^1.1.0, loose-envify@npm:^1.4.0":
+"loose-envify@npm:^1.0.0, loose-envify@npm:^1.1.0, loose-envify@npm:^1.4.0":
   version: 1.4.0
   resolution: "loose-envify@npm:1.4.0"
   dependencies:
@@ -11530,12 +11619,14 @@ __metadata:
     "@emotion/css": "npm:^11.13.4"
     "@emotion/react": "npm:^11.13.3"
     "@emotion/styled": "npm:^11.13.0"
+    "@react-google-maps/api": "npm:^2.20.3"
     "@testing-library/jest-dom": "npm:^5.14.1"
     "@testing-library/react": "npm:^13.0.0"
     "@testing-library/user-event": "npm:^13.2.1"
     "@types/jest": "npm:^27.0.1"
     "@types/node": "npm:^16.7.13"
     "@types/react": "npm:^18.0.0"
+    "@types/react-copy-to-clipboard": "npm:^5"
     "@types/react-dom": "npm:^18.0.0"
     craco-alias: "npm:^3.0.1"
     date-fns: "npm:^4.1.0"
@@ -11547,6 +11638,7 @@ __metadata:
     firebase: "npm:^10.14.1"
     prettier: "npm:^3.3.3"
     react: "npm:^18.3.1"
+    react-copy-to-clipboard: "npm:^5.1.0"
     react-dom: "npm:^18.3.1"
     react-infinite-scroll-component: "npm:^6.1.0"
     react-markdown: "npm:^9.0.1"
@@ -12802,6 +12894,18 @@ __metadata:
     regenerator-runtime: "npm:^0.13.9"
     whatwg-fetch: "npm:^3.6.2"
   checksum: 10/c544a1d9f5b3e4df1f51a01ceaa21d1350016520d0caf67549239ce112ea00b6014612f756e576609b986abe6eca1bb4f2625608bb9ae4501b74ca4398874be3
+  languageName: node
+  linkType: hard
+
+"react-copy-to-clipboard@npm:^5.1.0":
+  version: 5.1.0
+  resolution: "react-copy-to-clipboard@npm:5.1.0"
+  dependencies:
+    copy-to-clipboard: "npm:^3.3.1"
+    prop-types: "npm:^15.8.1"
+  peerDependencies:
+    react: ^15.3.0 || 16 || 17 || 18
+  checksum: 10/56a8b11a268a19d4e4ec409327f1c17d68c4f13a54330b9c0e3271acb44bb6886b72e04d77399c9945968851e8532dd192bbccffd1b2f8b010f4bb47e5743b3b
   languageName: node
   linkType: hard
 
@@ -14318,6 +14422,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"supercluster@npm:^8.0.1":
+  version: 8.0.1
+  resolution: "supercluster@npm:8.0.1"
+  dependencies:
+    kdbush: "npm:^4.0.2"
+  checksum: 10/3e517e54087fe24efa274013a5c116b0083d140d3cd855c5004fef61b64dde83510d2a65cd6565349b693751936aede2305f76d84778e6107ae1b3ffa18a5bae
+  languageName: node
+  linkType: hard
+
 "supports-color@npm:^5.3.0":
   version: 5.5.0
   resolution: "supports-color@npm:5.5.0"
@@ -14636,6 +14749,13 @@ __metadata:
   dependencies:
     is-number: "npm:^7.0.0"
   checksum: 10/10dda13571e1f5ad37546827e9b6d4252d2e0bc176c24a101252153ef435d83696e2557fe128c4678e4e78f5f01e83711c703eef9814eb12dab028580d45980a
+  languageName: node
+  linkType: hard
+
+"toggle-selection@npm:^1.0.6":
+  version: 1.0.6
+  resolution: "toggle-selection@npm:1.0.6"
+  checksum: 10/9a0ed0ecbaac72b4944888dacd79fe0a55eeea76120a4c7e46b3bb3d85b24f086e90560bb22f5a965654a25ab43d79ec47dfdb3f1850ba740b14c5a50abc7040
   languageName: node
   linkType: hard
 

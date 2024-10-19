@@ -8,6 +8,8 @@ import {
   // 커서를 기준으로 몇개를 가져올지
   startAfter,
   doc,
+  where,
+  documentId,
 } from 'firebase/firestore'
 
 import { COLLECTIONS } from '@constants'
@@ -50,4 +52,22 @@ export async function getHotel(id: string) {
     id,
     ...snapshot.data(),
   } as Hotel
+}
+
+export async function getRecommendHotels(hotelIds: string[]) {
+  const recommendQuery = query(
+    collection(store, COLLECTIONS.HOTEL),
+    // 전체 문서 중에, 문서의 아이디가 포함된 호텔만 뽑아옴.
+    where(documentId(), 'in', hotelIds),
+  )
+  // 추천호텔들을 뽑아옴
+  const snapshot = await getDocs(recommendQuery)
+
+  return snapshot.docs.map(
+    (doc) =>
+      ({
+        id: doc.id,
+        ...doc.data(),
+      }) as Hotel,
+  )
 }
