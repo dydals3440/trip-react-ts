@@ -6,6 +6,7 @@ import Flex from '@shared/Flex'
 import Button from '@shared/Button'
 import { useCallback } from 'react'
 import useUser from '@components/hotel/hooks/auth/useUser'
+import Spacing from '@shared/Spacing'
 
 function Navbar() {
   const location = useLocation()
@@ -16,19 +17,30 @@ function Navbar() {
   const renderButton = useCallback(() => {
     if (user != null) {
       return (
-        <Link to={'/my'}>
-          {/*TODO: 나중에 수정*/}
-          <img
-            src={
-              user.photoURL ??
-              'https://cdn3.iconfinder.com/data/icons/font-awesome-solid/512/circle-user-64.png'
-            }
-            alt={'유저의 이미지'}
-            width={40}
-            height={40}
-            style={{ borderRadius: '100%' }}
-          />
-        </Link>
+        <Flex align="center">
+          <Link to={'/my'}>
+            {/*TODO: 나중에 수정*/}
+            <img
+              src={
+                user.photoURL ??
+                'https://cdn3.iconfinder.com/data/icons/font-awesome-solid/512/circle-user-64.png'
+              }
+              alt={'유저의 이미지'}
+              width={40}
+              height={40}
+              style={{ borderRadius: '100%' }}
+            />
+          </Link>
+          <Spacing size={10} direction={'horizontal'} />
+          <Link to={'/settings'}>
+            <img
+              src="https://cdn3.iconfinder.com/data/icons/streamline-icon-set-free-pack/48/Streamline-75-64.png"
+              width={40}
+              height={40}
+              alt="Setting"
+            />
+          </Link>
+        </Flex>
       )
     }
 

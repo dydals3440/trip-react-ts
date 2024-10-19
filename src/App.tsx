@@ -7,6 +7,9 @@ import MyPage from '@pages/My'
 import SigninPage from '@pages/Signin'
 import AuthGuard from '@components/auth/AuthGuard'
 import Navbar from '@shared/Navbar'
+import SettingsPage from '@pages/settings'
+import LikePage from '@pages/settings/Like'
+import PrivateRoute from '@contexts/PrivateRoute'
 
 function App() {
   useLoadKakao()
@@ -17,8 +20,32 @@ function App() {
         <Routes>
           <Route path="/" element={<HotelList />} />
           <Route path="/hotel/:id" element={<HotelPage />} />
-          <Route path="/my" element={<MyPage />} />
+          <Route
+            path="/my"
+            element={
+              <PrivateRoute>
+                <MyPage />
+              </PrivateRoute>
+            }
+          />
           <Route path="/signin" element={<SigninPage />} />
+          <Route
+            path="/settings"
+            element={
+              <PrivateRoute>
+                <SettingsPage />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/settings/like"
+            element={
+              <PrivateRoute>
+                <LikePage />
+              </PrivateRoute>
+            }
+          />
+
           <Route path="/test" element={<TestPage />} />
         </Routes>
       </AuthGuard>

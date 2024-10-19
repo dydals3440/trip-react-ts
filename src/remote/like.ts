@@ -108,3 +108,16 @@ export async function toggleLike({
     return setDoc(doc(collection(store, COLLECTIONS.LIKE)), newLike)
   }
 }
+
+export function updateOrder(likes: Like[]) {
+  const batch = writeBatch(store)
+  likes.forEach((like, index) => {
+    // 해당 id를 갖은 like 정보를 찾아오고
+    // order를 index + 1로 업데이트하고싶음. order 재정렬
+    batch.update(doc(collection(store, COLLECTIONS.LIKE), like.id), {
+      order: like.order,
+    })
+  })
+
+  return batch.commit()
+}
