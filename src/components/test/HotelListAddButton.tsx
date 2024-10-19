@@ -13,23 +13,25 @@ function random(min: number, max: number) {
 function HotelListAddButton() {
   const batch = writeBatch(store)
   const handleButtonClick = () => {
-    const hotels = HOTEL_NAMES.map((hotelName: string, idx: number) => {
+    const hotels = HOTEL_NAMES.map((hotelName, idx) => {
       return {
         name: hotelName,
         mainImageUrl: IMAGES[Math.floor(Math.random() * IMAGES.length)],
         images: IMAGES,
         price: random(130000, 200000),
-        startRating: random(1, 5),
+        starRating: random(1, 5),
         ...HOTEL,
         ...(EVENTS[idx] != null && { events: EVENTS[idx] }),
       }
     })
+
     hotels.forEach((hotel) => {
       const hotelDocRef = doc(collection(store, COLLECTIONS.HOTEL))
+
       batch.set(hotelDocRef, hotel)
 
       ROOMS.forEach((room) => {
-        // HOTEL이라는 컬렉션안에 룸이 생김
+        // HOTEL 이라는 컬렉션안에 ROOM 컬렉션이 생김
         const subDocRef = doc(collection(hotelDocRef, COLLECTIONS.ROOM))
         batch.set(subDocRef, room)
       })
