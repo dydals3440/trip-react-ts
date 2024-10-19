@@ -4,8 +4,10 @@ import {
   limit,
   query,
   getDocs,
+  getDoc,
   // 커서를 기준으로 몇개를 가져올지
   startAfter,
+  doc,
 } from 'firebase/firestore'
 
 import { COLLECTIONS } from '@constants'
@@ -41,4 +43,11 @@ export async function getHotels(pageParams?: QuerySnapshot<Hotel>) {
   }
 }
 
-export default getHotels
+export async function getHotel(id: string) {
+  const snapshot = await getDoc(doc(store, COLLECTIONS.HOTEL, id))
+
+  return {
+    id,
+    ...snapshot.data(),
+  } as Hotel
+}

@@ -3,7 +3,7 @@ import { css } from '@emotion/react'
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 
-import { Hotel as IHotel } from '@models/hotel'
+import { Hotel } from '@models/hotel'
 import ListRow from '@shared/ListRow'
 import Flex from '@shared/Flex'
 import Text from '@shared/Text'
@@ -13,7 +13,7 @@ import Tag from '@shared/Tag'
 import addDelimiter from '@utils/addDelimiter'
 import formatTime from '@utils/formatTime'
 
-function HotelItem({ hotel }: { hotel: IHotel }) {
+function HotelItem({ hotel }: { hotel: Hotel }) {
   const [remainedTime, setRemainedTime] = useState(0)
 
   // 최초 진입시, 첫 렌더링 될 떄 캐치를 해서, Interval을 걸어줌.
