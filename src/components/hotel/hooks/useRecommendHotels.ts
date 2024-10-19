@@ -2,7 +2,7 @@ import { useQuery } from 'react-query'
 import { getRecommendHotels } from '@remote/hotel'
 
 function useRecommendHotels({ hotelIds }: { hotelIds: string[] }) {
-  console.log(JSON.stringify(hotelIds), hotelIds)
+  // console.log(JSON.stringify(hotelIds) === hotelIds)
   return useQuery(
     ['recommendHotels', JSON.stringify(hotelIds)],
     () => getRecommendHotels(hotelIds),
