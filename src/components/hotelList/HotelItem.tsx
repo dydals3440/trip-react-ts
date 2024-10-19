@@ -1,7 +1,7 @@
 import { differenceInMilliseconds, parseISO } from 'date-fns'
 import { css } from '@emotion/react'
 import { Link } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { MouseEvent, useEffect, useState } from 'react'
 
 import { Hotel } from '@models/hotel'
 import ListRow from '@shared/ListRow'
@@ -13,9 +13,31 @@ import Tag from '@shared/Tag'
 import addDelimiter from '@utils/addDelimiter'
 import formatTime from '@utils/formatTime'
 
-function HotelItem({ hotel }: { hotel: Hotel }) {
+function HotelItem({
+  hotel,
+  isLike,
+  onLike,
+}: {
+  hotel: Hotel
+  isLike: boolean
+  onLike: ({
+    hotel,
+  }: {
+    hotel: Pick<Hotel, 'name' | 'id' | 'mainImageUrl'>
+  }) => void
+}) {
   const [remainedTime, setRemainedTime] = useState(0)
-
+  const handleLike = (e: MouseEvent<HTMLImageElement>) => {
+    // 이미지 안의 하트 버튼이 눌렸을 떄, 이벤트를 죽임.
+    e.preventDefault()
+    onLike({
+      hotel: {
+        name: hotel.name,
+        mainImageUrl: hotel.mainImageUrl,
+        id: hotel.id,
+      },
+    })
+  }
   // 최초 진입시, 첫 렌더링 될 떄 캐치를 해서, Interval을 걸어줌.
   useEffect(() => {
     if (hotel.events == null || hotel.events.promoEndTime == null) {
@@ -80,7 +102,21 @@ function HotelItem({ hotel }: { hotel: Hotel }) {
             </Flex>
           }
           right={
-            <Flex direction={'column'} align={'flex-end'}>
+            <Flex
+              direction={'column'}
+              align={'flex-end'}
+              style={{ position: 'relative' }}
+            >
+              <img
+                css={iconHeartStyles}
+                src={
+                  isLike
+                    ? 'https://cdn4.iconfinder.com/data/icons/twitter-29/512/166_Heart_Love_Like_Twitter-128.png'
+                    : 'https://cdn4.iconfinder.com/data/icons/48-bubbles/48/39.Heart-128.png'
+                }
+                alt="하트"
+                onClick={handleLike}
+              />
               {/* css를 직접 넣으면, 리렌더링이 계속됨. 새로운 스타일링을 만들어냄, 한번 만들어놓고 가져다 쓰는게 성능상 좋기에 아래 const로 따로 분류 */}
               <img src={hotel.mainImageUrl} alt={''} css={imageStyles} />
               <Spacing size={8} />
@@ -104,6 +140,14 @@ const imageStyles = css`
   border-radius: 8px;
   object-fit: cover;
   margin-left: 16px;
+`
+
+const iconHeartStyles = css`
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 30px;
+  height: 30px;
 `
 
 export default HotelItem

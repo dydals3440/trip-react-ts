@@ -5,10 +5,13 @@ import HotelItem from '@components/hotelList/HotelItem'
 import { Fragment } from 'react'
 import Spacing from '@shared/Spacing'
 import InfiniteScroll from 'react-infinite-scroll-component'
-import HotelListAddButton from '@components/test/HotelListAddButton'
+import useLike from '@components/hotel/hooks/like/useLike'
 
 const HotelListPage = () => {
   const { data: hotels, hasNextPage, loadMore } = useHotels()
+  const { data: likes, mutate: like } = useLike()
+
+  console.log(likes)
   return (
     <div>
       <Top title="인기 호텔" subTitle="호텔부터 펜션까지 최저가" />
@@ -23,7 +26,14 @@ const HotelListPage = () => {
         {hotels?.map((hotel, idx) => {
           return (
             <Fragment key={hotel.id}>
-              <HotelItem hotel={hotel} />
+              <HotelItem
+                onLike={like}
+                hotel={hotel}
+                // find는 객체를 Return Boolean으로 감쌈
+                isLike={Boolean(
+                  likes?.find((like) => like.hotelId === hotel.id),
+                )}
+              />
 
               {hotels.length - 1 === idx ? null : (
                 <Spacing
