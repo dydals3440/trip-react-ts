@@ -16,6 +16,23 @@ import { COLLECTIONS } from '@constants'
 import { Like } from '@models/like'
 import { Hotel } from '@models/hotel'
 
+export function generateMocks() {
+  const mocks = []
+
+  for (let i = 0; i < 1000; i += 1) {
+    mocks.push({
+      id: `${i}`,
+      hotelId: `hotel ${i}`,
+      hotelName: `hotel ${i}`,
+      hotelMainImageUrl: `hotel ${i}`,
+      userId: '',
+      order: i,
+    } as Like)
+  }
+
+  return mocks
+}
+
 export async function getLikes({ userId }: { userId: string }) {
   const snapshot = await getDocs(
     query(
