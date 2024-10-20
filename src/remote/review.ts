@@ -5,6 +5,8 @@ import {
   getDocs,
   orderBy,
   query,
+  setDoc,
+  deleteDoc,
 } from 'firebase/firestore'
 
 import { store } from './firebase'
@@ -70,4 +72,26 @@ export async function getReviews({ hotelId }: { hotelId: string }) {
   }
 
   return results
+}
+
+// id는 알아서 추가해주기 떄문에 Omit
+export function writeReview(review: Omit<Review, 'id'>) {
+  const hotelRef = doc(store, COLLECTIONS.HOTEL, review.hotelId)
+  const reviewRef = doc(collection(hotelRef, COLLECTIONS.REVIEW))
+
+  return setDoc(reviewRef, review)
+}
+
+export function removeReview({
+  reviewId,
+  hotelId,
+}: {
+  reviewId: string
+  hotelId: string
+}) {
+  // 1. Detail 호텔 찾음.
+  const hotelRef = doc(store, COLLECTIONS.HOTEL, hotelId)
+  const reviewRef = doc(collection(hotelRef, COLLECTIONS.REVIEW), reviewId)
+
+  return deleteDoc(reviewRef)
 }
