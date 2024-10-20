@@ -6,10 +6,11 @@ import Carousel from '@components/hotel/Carousel'
 import Contents from '@components/hotel/Conternts'
 import Rooms from '@components/hotel/Rooms'
 import Map from '@components/hotel/Map'
-import RecommendHotelButton from '@components/test/RecommendHotelButton'
 import RecommendHotels from '@components/hotel/RecommendHotels'
 import ActionButtons from '@components/hotel/ActionButtons'
 import Review from '@components/hotel/Review'
+import ScrollProgressBar from '@shared/ScrollProgressBar'
+import { css } from '@emotion/react'
 
 function HotelPage() {
   const { id } = useParams() as { id: string }
@@ -24,6 +25,7 @@ function HotelPage() {
 
   return (
     <div>
+      <ScrollProgressBar style={scrollProgressBarStyles} />
       <Top title={name} subTitle={comment} />
       <Carousel images={images} />
       <ActionButtons hotel={data} />
@@ -35,5 +37,11 @@ function HotelPage() {
     </div>
   )
 }
+
+const scrollProgressBarStyles = css`
+  position: sticky;
+  top: 64px;
+  z-index: 2;
+`
 
 export default HotelPage
