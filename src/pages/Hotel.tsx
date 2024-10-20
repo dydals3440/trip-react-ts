@@ -12,6 +12,10 @@ import Review from '@components/hotel/Review'
 import ScrollProgressBar from '@shared/ScrollProgressBar'
 import { css } from '@emotion/react'
 
+import SEO from '@shared/SEO'
+import { meta } from 'eslint-plugin-react/lib/rules/jsx-props-no-spread-multi'
+import description = meta.docs.description
+
 function HotelPage() {
   const { id } = useParams() as { id: string }
 
@@ -25,6 +29,7 @@ function HotelPage() {
 
   return (
     <div>
+      <SEO title={name} description={comment} image={images[0]} />
       <ScrollProgressBar style={scrollProgressBarStyles} />
       <Top title={name} subTitle={comment} />
       <Carousel images={images} />
