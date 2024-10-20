@@ -15,6 +15,7 @@ import {
 import { COLLECTIONS } from '@constants'
 import { store } from '@remote/firebase'
 import { Hotel } from '@models/hotel'
+import { Room } from '@models/room'
 
 export async function getHotels(pageParams?: QuerySnapshot<Hotel>) {
   const hotelsQuery =
@@ -70,4 +71,23 @@ export async function getRecommendHotels(hotelIds: string[]) {
         ...doc.data(),
       }) as Hotel,
   )
+}
+
+export async function getHotelWithRoom({
+  hotelId,
+  roomId,
+}: {
+  hotelId: string
+  roomId: string
+}) {
+  const hotelSnapshot = await getDoc(doc(store, COLLECTIONS.HOTEL, hotelId))
+  // 호텔의 서브 컬렉션인 room도 가져와야함. (hotel이 갖고있는 룸)
+  const roomSnapshot = await getDoc(
+    doc(hotelSnapshot.ref, COLLECTIONS.ROOM, roomId),
+  )
+
+  return {
+    hotel: hotelSnapshot.data() as Hotel,
+    room: roomSnapshot.data() as Room,
+  }
 }
