@@ -54,6 +54,8 @@ function RangePicker({ startDate, endDate, onChange }: RangePickerProps) {
         defaultMonth={today}
         onSelect={handleDayClick}
         selected={selected}
+        // 오늘부터가 아닌 오늘 다음날 (내일부터) 선택 가능.
+        // 오늘에다 하루를 더해줌.
         disabled={{
           before: addDays(new Date(), 1),
         }}

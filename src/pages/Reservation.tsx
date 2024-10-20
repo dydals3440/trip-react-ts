@@ -5,8 +5,12 @@ import Summary from '@components/reservation/Summary'
 import Spacing from '@shared/Spacing'
 import Form from '@components/reservation/Form'
 import addDelimiter from '@utils/addDelimiter'
+import useUser from '@components/hotel/hooks/auth/useUser'
+import { useNavigate } from 'react-router-dom'
 
 function ReservationPage() {
+  const user = useUser()
+  const navigate = useNavigate()
   const { startDate, endDate, roomId, hotelId, nights } = parse(
     window.location.search,
     { ignoreQueryPrefix: true },
@@ -21,15 +25,22 @@ function ReservationPage() {
   useEffect(() => {
     if (
       // 이중 하나라도 값이 없으면
-      [startDate, endDate, roomId, hotelId].some((param) => {
+      [user, startDate, endDate, nights, roomId, hotelId].some((param) => {
         return param == null
       })
     ) {
       window.history.back()
     }
-  }, [startDate, endDate, roomId, hotelId])
+  }, [startDate, user, endDate, nights, roomId, hotelId])
 
-  const { data, isLoading } = useReservation({ hotelId, roomId })
+  const {
+    data,
+    isLoading,
+    mutateAsync: makeReservation,
+  } = useReservation({
+    hotelId,
+    roomId,
+  })
 
   if (data == null || isLoading === true) {
     return null
@@ -37,7 +48,23 @@ function ReservationPage() {
 
   const { hotel, room } = data
 
-  const handleSubmit = () => {}
+  const handleSubmit = async (formValues: { [key: string]: string }) => {
+    console.log('formValues', formValues)
+    const newReservation = {
+      userId: user?.uid as string,
+      hotelId,
+      roomId,
+      startDate,
+      endDate,
+      price: room.price * Number(nights),
+      formValues,
+    }
+
+    await makeReservation(newReservation)
+
+    // TODO: 예약 완료페이지로 보내줌.
+    navigate(`/reservation/done?hotelName=${hotel.name}`)
+  }
 
   const buttonLabel = `${nights}박 ${addDelimiter(room.price * Number(nights))}원 예약하기`
 

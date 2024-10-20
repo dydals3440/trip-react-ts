@@ -8,17 +8,23 @@ import Select from '@shared/Select'
 import React, { useCallback } from 'react'
 import Spacing from '@shared/Spacing'
 
+type FormData = {
+  [key: string]: string
+}
+
 function Form({
   forms,
   onSubmit,
   buttonLabel,
 }: {
   forms: Hotel['forms']
-  onSubmit: () => void
+  onSubmit: (formValues: FormData) => void
   buttonLabel: string
 }) {
   // 블러 이벤트가 일어날떄 유효성 검사
-  const { register, formState, handleSubmit } = useForm({ mode: 'onBlur' })
+  const { register, formState, handleSubmit } = useForm<FormData>({
+    mode: 'onBlur',
+  })
 
   // 컴포넌트라는 함수에서, form을 받아서, form에 타입에 맞는, 것을 그려줌.
   const component = useCallback(
@@ -59,11 +65,14 @@ function Form({
   return (
     <div style={{ padding: 24 }}>
       <Text bold>예약정보</Text>
-
+      <Spacing size={16} />
       <form>
         {forms.map((form) => {
           return (
-            <React.Fragment key={form.id}>{component(form)}</React.Fragment>
+            <React.Fragment key={form.id}>
+              {component(form)}
+              <Spacing size={8} />
+            </React.Fragment>
           )
         })}
       </form>
