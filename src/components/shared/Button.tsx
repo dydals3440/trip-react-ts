@@ -52,7 +52,7 @@ function ButtonGroup({
   title,
   children,
 }: {
-  title: string
+  title?: string
   children: React.ReactNode
 }) {
   return (

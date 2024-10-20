@@ -1,8 +1,18 @@
 import { Reservation } from '@models/reservation'
-import { setDoc, doc, getDoc, updateDoc, collection } from 'firebase/firestore'
+import {
+  setDoc,
+  doc,
+  getDoc,
+  updateDoc,
+  collection,
+  query,
+  where,
+  getDocs,
+} from 'firebase/firestore'
 import { store } from '@remote/firebase'
 import { COLLECTIONS } from '@constants'
 import { Room } from '@models/room'
+import { getHotel } from '@remote/hotel'
 
 export async function makeReservation(newReservation: Reservation) {
   // 호텔과, 객실에 대한 정보를 가져와야함.
@@ -27,4 +37,31 @@ export async function makeReservation(newReservation: Reservation) {
     }),
     setDoc(doc(collection(store, COLLECTIONS.RESERVATION)), newReservation),
   ])
+}
+
+export async function getReservations({ userId }: { userId: string }) {
+  const reservationQuery = query(
+    collection(store, COLLECTIONS.RESERVATION),
+    where('userId', '==', userId),
+  )
+
+  const reservationSnapshot = await getDocs(reservationQuery)
+  // 예약 정보랑, 예약 정보 안에 있는 호텔 정보를 통해서, 호텔에 대한 정보를 가져와서 합쳐줌.
+  const result = []
+
+  for (const reservationDoc of reservationSnapshot.docs) {
+    const reservation = {
+      id: reservationDoc.id,
+      ...(reservationDoc.data() as Reservation),
+    }
+    // reservation 안에 든 호텔데이터를 통해서 호텔을 가져옴.
+    const hotel = await getHotel(reservation.hotelId)
+
+    result.push({
+      reservation,
+      hotel,
+    })
+  }
+
+  return result
 }

@@ -12,6 +12,8 @@ import LikePage from '@pages/settings/Like'
 import PrivateRoute from '@contexts/PrivateRoute'
 import SchedulePage from '@pages/Schedule'
 import ReservationPage from '@pages/Reservation'
+import ReservationDonePage from '@pages/ReservationDone'
+import ReservationList from '@pages/ReservationList'
 
 function App() {
   useLoadKakao()
@@ -60,6 +62,22 @@ function App() {
             element={
               <PrivateRoute>
                 <ReservationPage />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/reservation/done"
+            element={
+              <PrivateRoute>
+                <ReservationDonePage />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/reservation/list"
+            element={
+              <PrivateRoute>
+                <ReservationList />
               </PrivateRoute>
             }
           />

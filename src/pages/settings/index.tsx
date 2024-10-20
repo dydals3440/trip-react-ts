@@ -15,6 +15,16 @@ function SettingsPage() {
             />
           </Link>
         </li>
+        <li>
+          <Link to={'/reservation/list'}>
+            <ListRow
+              contents={
+                <ListRow.Texts title="예약목록" subTitle="예약목록 보러가기" />
+              }
+              withArrow={true}
+            />
+          </Link>
+        </li>
       </ul>
     </div>
   )
