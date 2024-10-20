@@ -14,6 +14,7 @@ import addDelimiter from '@utils/addDelimiter'
 import useUser from '@components/hotel/hooks/auth/useUser'
 import { useAlertContext } from '@contexts/AlertContext'
 import { useNavigate } from 'react-router-dom'
+import withSuspense from '@shared/hocs/withSuspense'
 
 function Rooms({ hotelId }: { hotelId: string }) {
   const { data } = useRooms({ hotelId })
@@ -121,4 +122,4 @@ const imageStyles = css`
   border-radius: 4px;
 `
 
-export default Rooms
+export default withSuspense(Rooms, { fallback: <div>룸 불러오는중....</div> })

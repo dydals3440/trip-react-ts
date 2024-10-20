@@ -6,12 +6,12 @@ import { Fragment } from 'react'
 import Spacing from '@shared/Spacing'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import useLike from '@components/hotel/hooks/like/useLike'
+import withSuspense from '@shared/hocs/withSuspense'
 
 const HotelListPage = () => {
   const { data: hotels, hasNextPage, loadMore } = useHotels()
   const { data: likes, mutate: like } = useLike()
 
-  console.log(likes)
   return (
     <div>
       <Top title="인기 호텔" subTitle="호텔부터 펜션까지 최저가" />
@@ -50,4 +50,6 @@ const HotelListPage = () => {
   )
 }
 
-export default HotelListPage
+export default withSuspense(HotelListPage, {
+  fallback: <div>호텔리스트 불러오는 중...</div>,
+})

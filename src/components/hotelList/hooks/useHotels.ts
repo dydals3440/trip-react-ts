@@ -14,6 +14,7 @@ function useHotels() {
       // 이거를 통해 커서를 전달
       return snapshot.lastVisible
     },
+    suspense: true,
   })
 
   const loadMore = useCallback(() => {
