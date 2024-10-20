@@ -3969,6 +3969,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/react-lazy-load-image-component@npm:^1":
+  version: 1.6.4
+  resolution: "@types/react-lazy-load-image-component@npm:1.6.4"
+  dependencies:
+    "@types/react": "npm:*"
+    csstype: "npm:^3.0.2"
+  checksum: 10/ab6fef9ecb43b547f7ebcc1b4c281f28287afcd503c78656864e2b81b43620a5a46ba7f0536f7b265e1fb44dc775f13ebd45dbebf5b03313be1bbce95a59d2e3
+  languageName: node
+  linkType: hard
+
 "@types/react-redux@npm:^7.1.20":
   version: 7.1.34
   resolution: "@types/react-redux@npm:7.1.34"
@@ -10332,6 +10342,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lodash.throttle@npm:^4.1.1":
+  version: 4.1.1
+  resolution: "lodash.throttle@npm:4.1.1"
+  checksum: 10/9be9fb2ffd686c20543167883305542f4564062a5f712a40e8c6f2f0d9fd8254a6e9d801c2470b1b24e0cdf2ae83c1277b55aa0fb4799a2db6daf545f53820e1
+  languageName: node
+  linkType: hard
+
 "lodash.uniq@npm:^4.5.0":
   version: 4.5.0
   resolution: "lodash.uniq@npm:4.5.0"
@@ -11684,6 +11701,7 @@ __metadata:
     "@types/react-beautiful-dnd": "npm:^13"
     "@types/react-copy-to-clipboard": "npm:^5"
     "@types/react-dom": "npm:^18.0.0"
+    "@types/react-lazy-load-image-component": "npm:^1"
     craco-alias: "npm:^3.0.1"
     date-fns: "npm:^4.1.0"
     eslint: "npm:^8.50.0"
@@ -11702,6 +11720,7 @@ __metadata:
     react-helmet-async: "npm:^2.0.5"
     react-hook-form: "npm:^7.47.0"
     react-infinite-scroll-component: "npm:^6.1.0"
+    react-lazy-load-image-component: "npm:^1.6.2"
     react-markdown: "npm:^9.0.1"
     react-query: "npm:^3.39.3"
     react-router-dom: "npm:^6.27.0"
@@ -13116,6 +13135,18 @@ __metadata:
   version: 18.3.1
   resolution: "react-is@npm:18.3.1"
   checksum: 10/d5f60c87d285af24b1e1e7eaeb123ec256c3c8bdea7061ab3932e3e14685708221bf234ec50b21e10dd07f008f1b966a2730a0ce4ff67905b3872ff2042aec22
+  languageName: node
+  linkType: hard
+
+"react-lazy-load-image-component@npm:^1.6.2":
+  version: 1.6.2
+  resolution: "react-lazy-load-image-component@npm:1.6.2"
+  dependencies:
+    lodash.debounce: "npm:^4.0.8"
+    lodash.throttle: "npm:^4.1.1"
+  peerDependencies:
+    react: ^15.x.x || ^16.x.x || ^17.x.x || ^18.x.x
+  checksum: 10/37d29dc9ac3ae4d602a013764b0732cc03abba19639ee1fe854f8890fbea205018ca042b782e2a246aabc91a0b49dec8dac910b89b3d6dcb0905ee4f3d7b5d2d
   languageName: node
   linkType: hard
 
