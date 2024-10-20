@@ -46,22 +46,22 @@ function Summary({
             </Text>
             <Text typography="t6">{`${startDate} - ${endDate} (${nights}박)`}</Text>
           </Flex>
-          {Object.keys(room.basicInfo).map((key) => {
-            return (
-              <Flex as="li" justify="space-between">
-                <Text typography="t6" color="gray600">
-                  {INFO_LABEL_MAP[key as keyof typeof INFO_LABEL_MAP]}
-                </Text>
-                <Text typography="t6">{room.basicInfo[key]}</Text>
-              </Flex>
-            )
-          })}
+          {/*{Object.keys(room.basicInfo).map((key) => {*/}
+          {/*  return (*/}
+          {/*    <Flex as="li" justify="space-between">*/}
+          {/*      <Text typography="t6" color="gray600">*/}
+          {/*        {INFO_LABEL_MAP[key as keyof typeof INFO_LABEL_MAP]}*/}
+          {/*      </Text>*/}
+          {/*      <Text typography="t6">{room.basicInfo[key]}</Text>*/}
+          {/*    </Flex>*/}
+          {/*  )*/}
+          {/*})}*/}
 
+          {/* 타입 에러 해결*/}
           {Object.keys(room.basicInfo).map((key) => {
-            console.log(key, room.basicInfo)
             if (key in INFO_LABEL_MAP) {
               return (
-                <Flex as="li" justify="space-between">
+                <Flex key={key} as="li" justify="space-between">
                   <Text typography="t6" color="gray600">
                     {INFO_LABEL_MAP[key as keyof typeof INFO_LABEL_MAP]}
                   </Text>
