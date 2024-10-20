@@ -22,7 +22,7 @@ function useReservation({
       }),
     {
       onSuccess: ({ room }) => {
-        if (room.avaliableCount === 0) {
+        if (room.availableCount === 0) {
           open({
             title: '객실이 매진되었습니다.',
             onButtonClick: () => {

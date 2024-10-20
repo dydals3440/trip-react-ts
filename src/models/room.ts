@@ -1,5 +1,5 @@
 export interface Room {
-  avaliableCount: number
+  availableCount: number
   basicInfo: {
     // key는 string이지만, 값은 string or number
     [key: string]: string | number

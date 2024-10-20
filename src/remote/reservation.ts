@@ -15,7 +15,7 @@ export async function makeReservation(newReservation: Reservation) {
   )
 
   const room = roomSnapshot.data() as Room
-  const 지금잔여객실수 = room.avaliableCount
+  const 지금잔여객실수 = room.availableCount
 
   if (지금잔여객실수 === 0) {
     throw new Error('현재 남은 방이 없습니다.')

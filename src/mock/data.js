@@ -122,7 +122,7 @@ export const ROOMS = [
   {
     price: 130000,
     roomName: 'Single room',
-    avaliableCount: 2,
+    availableCount: 2,
     basicInfo: {
       squareMeters: '16m²',
       maxOccupancy: 4,
@@ -135,7 +135,7 @@ export const ROOMS = [
   {
     price: 150000,
     roomName: 'Double room',
-    avaliableCount: 2,
+    availableCount: 2,
     basicInfo: {
       squareMeters: '16m²',
       maxOccupancy: 4,
@@ -147,7 +147,7 @@ export const ROOMS = [
   {
     price: 200000,
     roomName: '트윈룸, 여성 전용, 금연',
-    avaliableCount: 0,
+    availableCount: 0,
     basicInfo: {
       squareMeters: '16m²',
       maxOccupancy: 4,
