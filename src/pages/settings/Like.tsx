@@ -80,7 +80,7 @@ function StrictModeDroppable({ children, ...props }: DroppableProps) {
     }
   }, [])
 
-  if (enabled == false) {
+  if (enabled === false) {
     return null
   }
 

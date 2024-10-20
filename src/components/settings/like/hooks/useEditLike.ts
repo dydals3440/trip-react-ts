@@ -13,33 +13,32 @@ function useEditLike() {
   const { open } = useAlertContext()
   const client = useQueryClient()
 
+  console.log(updatedLikes)
   // data가 변경되는 시점을 catch
   useEffect(() => {
     if (data != null) setUpdatedLikes(data)
   }, [data])
 
-  const reorder = useCallback(
-    (from: number, to: number) => {
-      setIsEdit(true)
-      setUpdatedLikes((prevUpdatedLikes) => {
-        const newItems = [...prevUpdatedLikes]
+  const reorder = useCallback((from: number, to: number) => {
+    setIsEdit(true)
+    setUpdatedLikes((prevUpdatedLikes) => {
+      const newItems = [...prevUpdatedLikes]
 
-        // 먼저 1개를 잘라냄
-        const [fromItem] = newItems.splice(from, 1)
+      // 먼저 1개를 잘라냄
+      const [fromItem] = newItems.splice(from, 1)
 
-        if (fromItem != null) {
-          newItems.splice(to, 0, fromItem)
-        }
+      if (fromItem != null) {
+        newItems.splice(to, 0, fromItem)
+      }
 
-        newItems.forEach((like, index) => {
-          like.order = index + 1
-        })
-
-        return newItems
+      newItems.forEach((like, index) => {
+        console.log(index, '인덱스', like.order)
+        like.order = index + 1
       })
-    },
-    [data],
-  )
+
+      return newItems
+    })
+  }, [])
 
   // 실제 서버 저장
   const save = async () => {
